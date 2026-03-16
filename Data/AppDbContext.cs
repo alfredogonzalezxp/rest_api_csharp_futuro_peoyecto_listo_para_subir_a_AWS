@@ -62,8 +62,6 @@ namespace api.Data
          */
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-
             /*
              * IMPLEMENTATION EXPLANATION:
              * 
@@ -71,16 +69,28 @@ namespace api.Data
              *    - "Call the implementation of the Parent Class (DbContext) first."
              *    - Why? 
              *      a) Safety: Ensures any default configuration from Microsoft is applied.
-             *      b) Inheritance: If you were inheriting from IdentityDbContext, this line is CRITICAL to set up user tables. Without it, your auth system breaks.
+             *      b) Inheritance: If you were inheriting from 
+                    IdentityDbContext, this line is CRITICAL to set up user 
+                    tables. Without it, your auth system breaks.
+
+                    base: This is a special keyword in C# that means "Look at my Parent class". Since your class 
+                    AppDbContext inherits from 
+                    DbContext
+                    , base refers directly to Microsoft's 
+                      DbContext
+                    .
              */
             base.OnModelCreating(modelBuilder);
 
             /*
              * 2. builder.Entity<User>().HasIndex(u => u.Email).IsUnique();
              *    - "For the 'User' table..."
-             *    - "Create a database INDEX on the 'Email' column." (Makes searching by email extremely fast).
-             *    - "Make it UNIQUE." (The database will reject any INSERT/UPDATE if the email already exists).
-             *    - This enforces the rule: "No two users can have the same email" at the database level.
+             *    - "Create a database INDEX on the 'Email' column."
+               (Makes searching by email extremely fast).
+             *    - "Make it UNIQUE." (The database will reject any 
+                   INSERT/UPDATE if the email already exists).
+             *    - This enforces the rule: "No two users can have 
+             the same email" at the database level.
              */
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)

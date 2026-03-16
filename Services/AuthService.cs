@@ -104,7 +104,7 @@ namespace api.Services
              so go ahead and handle other users while I wait."
 
         3. Task<string>: 
-           - " The Promise". It returns a "Task" (a job in progress).
+           - "The Promise". It returns a "Task" (a job in progress).
            - When the task finishes, it will give you a "string" (The JWT Token).
 
         4. (LoginDto loginDto): 

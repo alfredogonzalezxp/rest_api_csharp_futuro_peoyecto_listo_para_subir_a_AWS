@@ -67,14 +67,42 @@ namespace api.Middleware
          *    - Development: Shows exact error & stack trace (so you can fix it).
          *    - Production: Shows generic "Internal Server Error" (so hackers don't see code).
          */
+
+        /*
+        Who calls it? The ASP.NET Core Request Pipeline (Internal 
+        code of the framework).
+        When is it called? Every single time an HTTP request 
+        hits your server.
+        How does the framework know which method to call? It 
+        searches your class for a method with the exact signature 
+        public async Task InvokeAsync(HttpContext context).
+
+        */
         public async Task InvokeAsync(HttpContext context)
         {
             try
             {
+
+                /*
+                Passes the Request Forward: It tells the system: "I have 
+                finished my part (setting up the safety net). 
+                Now, call the next middleware in the line."
+
+                
+                */
                 await _next(context);
             }
             catch (Exception ex)
             {
+
+                /*
+                If ANY code that happens after this line (like a bug in 
+                your AuthService or a database error) throws an exception,
+                 the execution "ball" is dropped.
+
+
+
+                */
                 _logger.LogError(ex, ex.Message);
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

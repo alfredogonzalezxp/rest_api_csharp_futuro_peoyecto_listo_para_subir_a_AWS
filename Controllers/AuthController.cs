@@ -12,7 +12,7 @@ namespace api.Controllers
     Why ControllerBase?
     By inheriting from ControllerBase, your 
     AuthController
-     instantly gains access to helper methods for API responses, such as:
+    instantly gains access to helper methods for API responses, such as:
     Ok() (returns HTTP 200)
     BadRequest() (returns HTTP 400)
     NotFound() (returns HTTP 404)
@@ -144,6 +144,12 @@ namespace api.Controllers
             */
             var user = await _authService.Register(registerDto);
             return Ok(new { message = "User registered successfully", userId = user.Id });
+            /*
+            so _context.Users.FindAsync(id); is taken from
+             the class AppDbContext  who inherits DbContext.
+
+            
+            */
         }
         /*
         below is the same explanation like above.

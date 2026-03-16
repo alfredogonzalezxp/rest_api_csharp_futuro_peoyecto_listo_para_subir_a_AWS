@@ -1,3 +1,15 @@
+/*
+so this // Ensure database is created (without migrations)
+context.Database.EnsureCreated();
+and DbInitializer.Initialize(context, passwordHasher); 
+this is for create the table 
+
+so the table users and his fields is taken for domain.user isnt?
+
+*/
+
+
+
 using api.Common;
 using api.Domain;
 

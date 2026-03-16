@@ -177,7 +177,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
  * 2. JwtBearerDefaults.AuthenticationScheme:
  *    - "Set the DEFAULT method to JWT Bearer".
  *    - This is just the string "Bearer". It tells the system:
- *      "When checking if someone is logged in, look for a JWT token 
+ qw3*      "When checking if someone is logged in, look for a JWT token 
  *       in the 'Authorization' header of the request."
  *    - Example header: Authorization: Bearer eyJhbGci...
  * 
