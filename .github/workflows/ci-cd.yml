@@ -21,13 +21,13 @@ jobs:
           dotnet-version: "8.0.x"
 
       - name: Restore
-        run: dotnet restore ./myapi.slnx
+        run: dotnet restore ./api.csproj
 
       - name: Build
-        run: dotnet build ./myapi.slnx --configuration Release --no-restore
+        run: dotnet build ./api.csproj --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test ./myapi.slnx --configuration Release --no-build
+        run: dotnet test ./myapi.tests/MyApi.Tests.csproj --configuration Release --no-build
 
   docker:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
