@@ -27,7 +27,7 @@ jobs:
         run: dotnet build ./api.csproj --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test ./myapi.tests/MyApi.Tests.csproj --configuration Release --no-build
+          run: dotnet test ./MyApi.Tests/MyApi.Tests.csproj --configuration Release --no-build
 
   docker:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
