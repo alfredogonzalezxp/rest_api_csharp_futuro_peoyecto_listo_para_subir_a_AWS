@@ -513,4 +513,9 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+
 app.Run();
+
+// Required for Integration Testing
+public partial class Program { }
+
