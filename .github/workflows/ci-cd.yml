@@ -53,7 +53,7 @@ jobs:
           context: .
           file: ./DockerFile
           push: true
-          tags: alfredognonzalezxp77/myapi:latest
+          tags: alfredogonzalezxp77/myapi:latest
 
       - name: Deploy on server
         uses: appleboy/ssh-action@v1.2.5
